@@ -5,6 +5,8 @@ export const Wrapper = styled.section`
   padding-right: 15px;
   padding-left: 15px;
   padding-bottom: 24px;
+
+  text-align: center;
 `;
 
 export const Title = styled.h2`

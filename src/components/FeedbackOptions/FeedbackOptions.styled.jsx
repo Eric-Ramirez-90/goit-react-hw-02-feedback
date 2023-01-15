@@ -4,13 +4,15 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 20px;
+  justify-content: center;
 `;
 
 export const Button = styled.button`
-  padding: 10px 15px;
-  font-size: 32px;
+  padding: 5px 10px;
+  font-size: 28px;
   text-align: center;
   background-color: white;
+  text-transform: capitalize;
 
   cursor: pointer;
 

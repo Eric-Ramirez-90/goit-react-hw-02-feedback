@@ -1,6 +1,7 @@
 import { Component } from 'react';
-// import { Section } from './Section/Section';
-// import { FeedBackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Section } from './Section/Section';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Statistics } from './Statistics/Statistics';
 
 export class App extends Component {
   state = {
@@ -9,36 +10,37 @@ export class App extends Component {
     bad: 0,
   };
 
-  onLeaveFeedBack = evt => {
-    console.log(evt.tagret);
-    // this.setState(prevState => ({
-    //   good: prevState.good + 1,
-    // }));
+  onLeaveFeedback = feedback => {
+    this.setState(prevState => ({
+      [feedback]: prevState[feedback] + 1,
+    }));
   };
 
+  countTotalFeedback = () => {};
+
+  countPositiveFeedbackPercentage = () => {};
+
   render() {
+    const { good, neutral, bad } = this.state;
+
     return (
       <div>
-        <div>
-          <h2>Please leave feedback</h2>
-          <div>
-            <button type="button" onClick={this.onLeaveFeedBack}>
-              Good
-            </button>
-            <button type="button">Neutral</button>
-            <button type="button">Bad</button>
-          </div>
-        </div>
-        <div>
-          <h2>Statistics</h2>
-          <div>
-            <ul>
-              <li>Good: {this.state.good}</li>
-              <li>Neutral: {this.state.neutral}</li>
-              <li>Bad: {this.state.bad}</li>
-            </ul>
-          </div>
-        </div>
+        <Section title={'Please leave feedback'}>
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.onLeaveFeedback}
+          />
+        </Section>
+
+        <Section title={'Statistics'}>
+          <Statistics
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
+          />
+        </Section>
       </div>
     );
   }
