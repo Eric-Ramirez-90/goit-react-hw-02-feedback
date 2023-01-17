@@ -19,7 +19,7 @@ export function FeedbackOptions({ options, onLeaveFeedback }) {
   );
 }
 
-FeedbackOptions.proptype = {
+FeedbackOptions.propTypes = {
   options: PropTypes.arrayOf(PropTypes.string.isRequired),
-  onLeaveFeedBack: PropTypes.func.isRequired,
+  onLeaveFeedBack: PropTypes.func,
 };
